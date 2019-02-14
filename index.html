@@ -7,7 +7,7 @@
     <meta name="author" content="Emmanuel Duchastenier">
 
 
-    <title>Bonitasoft presentation template</title>
+    <title>Bonitasoft - Engine use of Narayana / Arjuna POC</title>
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/bonitasoft-white.css">
@@ -34,97 +34,27 @@
 
         <section title="Section 1 title">
             <div data-markdown>
-                # Presentation title
+                # Engine use of Narayana /Arjuna POC
             </div>
         </section>
         <section title="presentation speakers">
-            <h2>Who are we?</h2>
+            <h2>Who am I?</h2>
             <p>Emmanuel Duchastenier</p>
-            <p>Laurent Leseigneur &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-twitter" aria-hidden="true"></i> @LLeseigneur</p>
             <p>
                 <img src="images/logo_with_text_large.png" width="40%"/><br/>
                 <i class="fa fa-twitter" aria-hidden="true"></i> @bonitasoft
             </p>
 
             <aside class="notes" data-markdown>
-                Introduce Bonitasoft and Bonita: BPM platform ...
             </aside>
         </section>
         <section title="summary">
             <h1>Summary</h1>
-            <h3 align="left"><i class="fa fa-book" aria-hidden="true"></i> Presentation of the context</h3>
-            <h3 align="left"><i class="fa fa-check-square" aria-hidden="true"></i> Use case 1</h3>
-            <h3 align="left"><i class="fa fa-refresh" aria-hidden="true"></i> How we did it</h3>
+            <h3 align="left"><i class="fa fa-book" aria-hidden="true"></i>Presentation of the context</h3>
+            <h3 align="left"><i class="fa fa-check-square" aria-hidden="true"></i>What we did</h3>
+            <h3 align="left"><i class="fa fa-refresh" aria-hidden="true"></i>Still to be done</h3>
             <aside class="notes" data-markdown>
                 We would like to introduce bla bla bla...
-            </aside>
-        </section>
-        <section title="glossaire">
-            <section>
-                <h1>Glossary</h1>
-                    <h3  class="fragment">BPMN</h3>
-                    <div class="fragment">
-                        This text appears on click
-                    </div>
-
-                <aside class="notes">
-                    Here go your presenter side notes....
-                </aside>
-            </section>
-            <section>
-                <h1>Glossary</h1>
-                <h2>I-BPMN</h3>
-                <div class="fragment" data-markdown>
-                    ### this section should appear ...
-                </div>
-                <div class="fragment" data-markdown>
-                    ### only on click ...
-                </div>
-
-                <aside class="notes">
-                    Hands-up poll...
-                </aside>
-            </section>
-            <section>
-                <h1>Glossary</h1>
-                <h3>Markdown</h3>
-                <div class="fragment" data-markdown>
-                    Text format with lightweight style formatting:
-                    ```markdown
-                    An h1 header
-                    ============
-
-                    Paragraphs are separated by a blank line.
-
-                    2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
-                    look like:
-
-                    * this one
-                    * that one
-                    * the other one
-                    ```
-                </div>
-
-                <aside class="notes">
-                </aside>
-            </section>
-        </section>
-
-        <section title="community">
-            <div data-markdown>
-            # A Vibrant Community
-            ![community](images/community.png)
-            </div>
-            <aside class="notes" data-markdown>
-            </aside>
-        </section>
-
-        <section title="enterprise">
-            <div data-markdown>
-            # Our Partners / Customers
-            ![community](images/enterprise.png)
-            </div>
-            <aside class="notes" data-markdown>
             </aside>
         </section>
 
@@ -144,30 +74,83 @@
             </section>
         </section>
 
-        <section title="conclusion">
+
+        <section>
             <section>
-                <h2><i class="fa fa-balance-scale" aria-hidden="true"></i> Conclusion</h2>
-                <aside class="notes" data-markdown>
-                    
-                </aside>
+                <h2><i class="fa fa-book" aria-hidden="true"></i> What we did</h2>
+            </section>
+            <section>
+                <div data-markdown class="fragment">
+                * Remplacement de la lib bitronix => narayana-jta (=arjuna)
+                </div>
+                <div data-markdown class="fragment">
+                * Adaptation de la conf et des paramètres
+                </div>
+                <div data-markdown class="fragment">
+                * Extraction / wrapping de l'utilisation du transaction manager dans une classe Bonita pour faciliter le changement d'implem par la suite
+                </div>
+            </section>
+
+            <section>
+                <h2><i class="fa fa-book" aria-hidden="true"></i> Spécificités / Difficultés:</h2>
             </section>
             <section>
                 <div data-markdown>
-                    ## Things to improve
-
-                    * configuration
-                    * feedbacks
+* bitronix fournit une datasource / un pool de connexion
+* narayana, non. Du coup, utilisation de Apache Commons DBCP2 qui supporte les pools / datasources XA
                 </div>
-                <aside class="notes" data-markdown>
-                </aside>
             </section>
         </section>
+
+
+        <section>
+            <section>
+                <h2><i class="fa fa-book" aria-hidden="true"></i> Achievements</h2>
+            </section>
+            <section>
+                <div data-markdown>
+* Tous les tests moteur H2 tournent
+* Tests sur toutes les Base de Données en cours: http://ymci.rd.lan/blue/organizations/jenkins/bonitasoft%2Fbonita-engine-sp/detail/PR-1199/1/pipeline
+
+                </div>
+            </section>
+        </section>
+
+
+        <section>
+            <section>
+                <h2><i class="fa fa-book" aria-hidden="true"></i> Reste à faire</h2>
+            </section>
+            <section>
+                <div data-markdown>
+* Faire plus de tests 
+* Checker tous les paramètres possibles de configuration
+
+                </div>
+            </section>
+        </section>
+
+
+        <section>
+            <section>
+                <h2><i class="fa fa-book" aria-hidden="true"></i> Bienfaits</h2>
+            </section>
+            <section>
+                <div data-markdown>
+* meilleur compréhension de comment s'articule ces briques (JTA transaction manager, UserTransaction, datasource, pool, configuration dans les AppServer)
+* A l'oeil humain, la rapidité d'exécution semble bonne
+* Va permettre d'embarquer le Transaction Manager dans le moteur
+* => Car il est compatible avec tous les SGBD, contrairement à Bitronix (incompatible avec SQL Server)
+* => => Donc va permettre de supprimer les bundles fournis par Bonita !
+
+                </div>
+            </section>
+        </section>
+
 
         <section title="References">
             <div data-markdown>
                 ## References
-
-                * Bonita official documentation website: http://documentation.bonitasoft.com
                 * Official [Bonita docker image](https://hub.docker.com/_/bonita/)
                 * These [presentation slides](https://educhastenier.github.io/bonita-presentation-js-template/): https://github.com/educhastenier/bonita-presentation-js-template
             </div>
